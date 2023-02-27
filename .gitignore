@@ -1,0 +1,10 @@
+# Dependencies
+node_modules
+
+# Examples artifacts
+examples/*.png
+examples/profile
+
+# Miscellaneous
+*.env
+data

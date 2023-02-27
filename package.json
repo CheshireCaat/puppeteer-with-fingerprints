@@ -1,0 +1,70 @@
+{
+  "name": "puppeteer-with-fingerprints",
+  "description": "A plugin that improves the stealth of the puppeteer library using fingerprints",
+  "homepage": "https://github.com/CheshireCaat/puppeteer-with-fingerprints#readme",
+  "repository": "CheshireCaat/puppeteer-with-fingerprints",
+  "author": "CheshireCaat",
+  "version": "1.1.0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CheshireCaat/puppeteer-with-fingerprints/issues",
+    "email": "cheshirecat902@gmail.com"
+  },
+  "types": "src/index.d.ts",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "browser-fingerprinting",
+    "device-fingerprinting",
+    "browser-fingerprint",
+    "device-fingerprint",
+    "privacy-protection",
+    "detection-evasion",
+    "fingerprinting",
+    "stealth-mode",
+    "chromedriver",
+    "websecurity",
+    "fingerprint",
+    "automation",
+    "puppeteer",
+    "chromium",
+    "headless",
+    "devtools",
+    "security",
+    "stealth",
+    "browser",
+    "privacy",
+    "chrome",
+    "web"
+  ],
+  "engines": {
+    "node": ">= 14.19.1"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "browser-with-fingerprints": "^1.2.6"
+  },
+  "devDependencies": {
+    "@cheshire-caat/prettier-config": "^1.0.0",
+    "dotenv": "^16.0.3",
+    "mocha": "^10.2.0",
+    "puppeteer": "^19.7.2"
+  },
+  "peerDependencies": {
+    "puppeteer": ">=19.1.0",
+    "puppeteer-core": ">=19.1.0"
+  },
+  "peerDependenciesMeta": {
+    "puppeteer": {
+      "optional": true
+    },
+    "puppeteer-core": {
+      "optional": true
+    }
+  },
+  "prettier": "@cheshire-caat/prettier-config"
+}
