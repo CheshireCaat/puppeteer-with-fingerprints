@@ -326,7 +326,7 @@ To do this, you can save them to a file or to a database - use any option conven
 In this way, you can speed up the process of launching the browser with the parameters you need, organize your storage, filter and sort fingerprints locally, and much more:
 
 ```js
-const { readFile, writeFile } = require('fs').promises;
+const { readFile, writeFile } = require('fs/promises');
 const { plugin } = require('puppeteer-with-fingerprints');
 
 // Save the fingerprint to a file:
