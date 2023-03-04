@@ -563,6 +563,9 @@ Format your code and wrap it in special **markdown** tags if you're adding it to
 // your code
 ```
 
+Please be careful not to attach various **secrets** in your code or screenshots - for example, fingerprint service keys, account passwords, and so on.
+In the case of service keys, this can lead to their blocking without a refund.
+
 If the recommendations are not followed, your ticket may be ignored.
 
 ## Testing
