@@ -55,6 +55,7 @@ But keep in mind that some versions may not be supported. In this case, you will
 You can always find supported version numbers [here](package.json#L58).
 
 Please note that this plugin only supports the default `puppeteer` library, wrappers have not been tested and may cause errors.
+Also, according to the [architecture](#architecture) section, this plugin can only be installed and used on **Windows** operating system.
 
 ## Creating new project
 
