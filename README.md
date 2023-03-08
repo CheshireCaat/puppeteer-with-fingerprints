@@ -477,7 +477,7 @@ For things not related to launching the browser and the plugin directly, it's be
 
 Check out other ready-made plugins for popular automation frameworks that have a similar **API** and architecture:
 
-- Plugin for **selenium** - [selenium-with-fingrprints](https://github.com/CheshireCaat/selenium-with-fingrprints)
+- Plugin for **selenium** - [selenium-with-fingerprints](https://github.com/CheshireCaat/selenium-with-fingerprints)
 - Plugin for **playwright** - [playwright-with-fingerprints](https://github.com/CheshireCaat/playwright-with-fingerprints)
 
 Also check out [BAS](https://bablosoft.com/shop/BrowserAutomationStudio) - a great alternative to automate the **Chrome** browser without programming skills.
