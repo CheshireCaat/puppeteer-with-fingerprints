@@ -4,7 +4,7 @@
   "homepage": "https://github.com/CheshireCaat/puppeteer-with-fingerprints#readme",
   "repository": "CheshireCaat/puppeteer-with-fingerprints",
   "author": "CheshireCaat",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CheshireCaat/puppeteer-with-fingerprints/issues",
@@ -15,7 +15,7 @@
   "scripts": {
     "test": "mocha",
     "format": "npx prettier -w .",
-    "release": "npm test && npm format && npm publish"
+    "release": "npm test && npm run format && npm publish"
   },
   "keywords": [
     "browser-fingerprinting",
@@ -48,7 +48,7 @@
     "src"
   ],
   "dependencies": {
-    "browser-with-fingerprints": "^1.2.10"
+    "browser-with-fingerprints": "^1.2.11"
   },
   "devDependencies": {
     "@cheshire-caat/prettier-config": "^1.0.0",
