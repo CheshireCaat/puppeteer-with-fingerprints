@@ -473,6 +473,16 @@ This library tries to replicate the interfaces of the **puppeteer** framework as
 Thus, it's convenient to use it not only for new projects, but also when migrating from the original version to this plugin.
 For things not related to launching the browser and the plugin directly, it's better to use the methods and properties of the original library.
 
+### Limitations
+
+Please **note** that there are some restrictions at the moment:
+
+- Only **Windows** operating system is supported.
+- Parallel launch of browsers is synchronized between calls.
+- Working with **workers** is possible only when specifying separate `FINGERPRINT_CWD` for each worker.
+
+Also, there is no guarantee that each of these items will be changed in the future.
+
 ## Alternatives
 
 Check out other ready-made plugins for popular automation frameworks that have a similar **API** and architecture:
