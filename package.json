@@ -48,13 +48,13 @@
     "src"
   ],
   "dependencies": {
-    "browser-with-fingerprints": "^1.2.12"
+    "browser-with-fingerprints": "1.2.12"
   },
   "devDependencies": {
     "@cheshire-caat/prettier-config": "^1.0.0",
     "dotenv": "^16.0.3",
     "mocha": "^10.2.0",
-    "puppeteer": "^19.7.3"
+    "puppeteer": "^19.7.5"
   },
   "peerDependencies": {
     "puppeteer": ">=19.1.0",
