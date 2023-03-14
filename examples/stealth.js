@@ -3,7 +3,8 @@ const { plugin } = require('..');
 
 const key = process.env.FINGERPRINT_KEY ?? '';
 
-plugin.fetch(key, { tags: ['Microsoft Windows', 'Chrome'] }).then(async (fingerprint) => {
+(async () => {
+  const fingerprint = await plugin.fetch(key, { tags: ['Microsoft Windows', 'Chrome'] });
   const browser = await plugin.useFingerprint(fingerprint).launch({ headless: false });
 
   const page = await browser.newPage();
@@ -13,4 +14,4 @@ plugin.fetch(key, { tags: ['Microsoft Windows', 'Chrome'] }).then(async (fingerp
 
   await page.screenshot({ path: `${__dirname}/stealth.png`, fullPage: true });
   await browser.close();
-});
+})();
