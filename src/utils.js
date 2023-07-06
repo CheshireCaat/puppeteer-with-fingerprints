@@ -76,7 +76,8 @@ exports.setViewport = async (page, { width = 0, height = 0 }) => {
     if (width === viewport.width && height === viewport.height) {
       break;
     } else if (i === MAX_RESIZE_RETRIES - 1) {
-      throw new Error('Unable to set correct viewport size.');
+      // TODO: improve handling of incorrect viewport size.
+      console.warn('Unable to set correct viewport size.');
     }
 
     delta.height += height - viewport.height;
@@ -103,7 +104,7 @@ exports.getViewport = (page) => page.evaluate(scripts.getViewport);
  */
 const waitForResize = (page) => page.evaluate(scripts.waitForResize);
 
-const MAX_RESIZE_RETRIES = 2;
+const MAX_RESIZE_RETRIES = 3; // TODO: move to common module.
 
 const resetOptions = (options = {}) => ({
   ...(options != null && typeof options === 'object' ? options : {}),
