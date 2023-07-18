@@ -36,7 +36,7 @@ describe('plugin', () => {
       assert.notEqual(browser, null);
       assert.match(browser.constructor.name, /Browser/);
 
-      for (const method of ['close', 'version', 'newPage']) {
+      for (const method of ['close', 'newPage']) {
         assert.equal(typeof browser[method], 'function');
       }
 

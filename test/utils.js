@@ -38,12 +38,14 @@ describe('utils', () => {
 
   describe('#bindHooks()', () => {
     it('should correctly modify original methods', async () => {
-      let ctx = null;
       let page = null;
+      let ctx = browser;
       bindHooks(browser);
 
       await assert.doesNotReject(async () => {
-        ctx = await browser.createIncognitoBrowserContext();
+        if (browser.version) {
+          ctx = await browser.createIncognitoBrowserContext();
+        }
       });
       assert.match(ctx.constructor.name, /Context/);
 

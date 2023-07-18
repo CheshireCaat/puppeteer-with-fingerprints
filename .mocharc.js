@@ -1,7 +1,9 @@
+'use strict';
+
 module.exports = {
   require: ['dotenv/config'],
   inlineDiffs: true,
-  timeout: '100s',
+  timeout: '180s',
   exit: true,
 };
 

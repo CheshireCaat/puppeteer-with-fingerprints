@@ -9,7 +9,7 @@ const { scripts } = require('browser-with-fingerprints/src/common');
  * @internal
  */
 exports.onClose = (target, listener) => {
-  target.once(target.browser ? 'close' : 'disconnected', listener);
+  target.once(target.version ? 'disconnected' : 'close', listener);
 };
 
 /**
