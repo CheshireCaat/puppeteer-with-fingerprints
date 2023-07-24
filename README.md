@@ -13,7 +13,7 @@ In general, only **four** basic steps are required, see the example below:
 
 https://user-images.githubusercontent.com/30115373/198843995-2d1a7941-e5e6-4344-9f59-f8bf43adab00.mp4
 
-Current supported engine version - **114.0.5735.91**.
+Current supported engine version - **115.0.5790.99**.
 
 ## About
 
@@ -294,7 +294,7 @@ In order to do this, use the **version** property. It defaults to `default`, whi
 const { plugin } = require('puppeteer-with-fingerprints');
 
 // Use a specific version:
-plugin.version = '114.0.5735.91';
+plugin.version = '115.0.5790.99';
 
 // Use the latest available version:
 plugin.version = 'default';
@@ -368,8 +368,8 @@ const { plugin } = require('puppeteer-with-fingerprints');
 
 const fingerprint = await plugin.fetch('SERVICE_KEY', {
   tags: ['Microsoft Windows', 'Chrome'],
-  // Fetch fingerprints only with a browser version higher than 114:
-  minBrowserVersion: 114,
+  // Fetch fingerprints only with a browser version higher than 115:
+  minBrowserVersion: 115,
   // Fetch fingerprints only with a browser version lower than 116:
   maxBrowserVersion: 116,
   // Fetch fingerprints only collected in the last 15 days:
@@ -410,7 +410,7 @@ const fingerprint = await plugin.fetch('', {
   // You can only use these tags with the free version:
   tags: ['Microsoft Windows', 'Chrome'],
   // You also cannot use such filters in the free version:
-  // minBrowserVersion: 114,
+  // minBrowserVersion: 115,
 });
 ```
 

@@ -1,4 +1,4 @@
-const { scripts } = require('browser-with-fingerprints/src/common');
+const { scripts, MAX_RESIZE_RETRIES } = require('browser-with-fingerprints/src/common');
 
 /**
  * Add an event listener for the browser's `close` event.
@@ -61,8 +61,8 @@ exports.bindHooks = (browser, hooks = {}) => {
  *
  * @internal
  */
-exports.setViewport = async (page, { width = 0, height = 0 }) => {
-  const delta = { width: 16, height: 88 };
+exports.setViewport = async (page, { diff, width = 0, height = 0 }) => {
+  const delta = diff ? { ...diff } : { width: 16, height: 88 };
 
   const cdp = await page.target().createCDPSession();
   const { windowId } = await cdp.send('Browser.getWindowForTarget');
@@ -103,8 +103,6 @@ exports.getViewport = (page) => page.evaluate(scripts.getViewport);
  * @param {import('puppeteer').Page} page - The target page to to wait for the browser to resize.
  */
 const waitForResize = (page) => page.evaluate(scripts.waitForResize);
-
-const MAX_RESIZE_RETRIES = 3; // TODO: move to common module.
 
 const resetOptions = (options = {}) => ({
   ...(options != null && typeof options === 'object' ? options : {}),
