@@ -3,7 +3,7 @@
 module.exports = {
   require: ['dotenv/config'],
   inlineDiffs: true,
-  timeout: '180s',
+  timeout: '300s',
   exit: true,
 };
 

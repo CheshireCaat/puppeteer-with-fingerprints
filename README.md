@@ -379,6 +379,9 @@ const fingerprint = await plugin.fetch('SERVICE_KEY', {
 
 All possible settings for **fetch** method, as well as their descriptions, you can find [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L149).
 
+The special `current` value can be used to filter fingerprints by browser version - in this case, the version installed for the plugin will be used.
+It can be very convenient as the browser and fingerprint versions will be exactly the same and you don't have to enter the exact values in multiple places.
+
 You can **reuse** fingerprints instead of requesting new ones each time.
 To do this, you can save them to a file or to a database - use any option convenient for you.
 In this way, you can speed up the process of launching the browser with the parameters you need, organize your storage, filter and sort fingerprints locally, and much more:
