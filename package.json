@@ -10,8 +10,9 @@
     "url": "https://github.com/CheshireCaat/puppeteer-with-fingerprints/issues",
     "email": "cheshirecat902@gmail.com"
   },
-  "types": "src/index.d.ts",
+  "type": "commonjs",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "test": "mocha",
     "format": "npx prettier -w .",

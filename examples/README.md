@@ -3,12 +3,13 @@
 This folder contains several different examples of using the plugin:
 
 - The `profiles.js` file - an example of using profiles in conjunction with a plugin.
-- The `parallel.js` file - an example of running multiple browsers at the same time and extracting different data from the site.
 - The `proxy.js` file - an example of launching a browser with a proxy and additional settings installed, getting an external **IP**.
+- The `multithreading.js` file - an example of running multiple browsers at the same time and extracting different data from the site.
 - The `stealth.js` file - checking the fingerprint replacement on a site that has an anti-bot system, getting a screenshot with the results.
 - The `multiple.js` file - launching several browsers sequentially with different fingerprints, collect some data about the headers and the viewport size.
 
-To run them, clone the repository locally and install the dependencies.
+To run them, install the necessary dependencies and use the contents of the files to work.
+You can also do this by cloning the repository locally and installing the dependencies.
 
 ## Configuration
 

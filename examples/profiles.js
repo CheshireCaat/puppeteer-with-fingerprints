@@ -1,5 +1,6 @@
-require('dotenv').config();
-const { plugin } = require('..');
+// require('dotenv').config();
+// Replace this import with `require('..')` if you are running the example from the repository:
+const { plugin } = require('puppeteer-with-fingerprints');
 
 (async () => {
   const browser = await plugin.launch({

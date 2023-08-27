@@ -1,5 +1,6 @@
-require('dotenv').config();
-const { plugin } = require('..');
+// require('dotenv').config();
+// Replace this import with `require('..')` if you are running the example from the repository:
+const { plugin } = require('puppeteer-with-fingerprints');
 
 // The default proxy value is just an example, it won't work.
 const proxy = process.env.FINGERPRINT_PROXY ?? 'socks5://127.0.0.1:9762';
