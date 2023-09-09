@@ -247,6 +247,24 @@ If possible, use it only in extreme cases. It is much more convenient to use the
 Annotations are described for all plugins methods directly in the library code via the **TypeScript** declarations, so when using it you will be able to see hints for all options and types.
 You can also find out about it directly [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts) and [here](src/index.d.ts).
 
+## Configuring plugin
+
+At the moment, it is possible to change the working folder and timeout for requests to the engine, which is used when fetching, applying fingerprints, and so on:
+
+```js
+// Set the folder where the plugin engine will be installed:
+plugin.setWorkingFolder('./engine');
+
+// Set the timeout used when fetching fingerprints and so on:
+plugin.setRequestTimeout(5 * 60000);
+```
+
+The methods from the example above change the settings globally, that is, for all instances of the plugin.
+
+The default values are the `./data` directory for the working folder and `300000` milliseconds for the request timeout.
+
+The same result can be achieved using environment variables, however it is strongly recommended to use the described methods.
+
 ## Configuring browser
 
 In order to change the fingerprint and proxy for your browser, you should use special separate methods:
@@ -467,7 +485,7 @@ const browser = await plugin.launch();
 
 If you specify the path yourself, then everything will work as usual - just the plugin will add additional components, like `widevine` or default extensions, to the specified profile.
 
-Also keep in mind that if you specify your own folder for the engine using the `FINGERPRINT_CWD` environment variable, then the profile path will be adjusted.
+Also keep in mind that if you specify your own folder for the engine using the `setWorkingFolder` method, then the profile path will be adjusted.
 
 ### Proxy usage
 
@@ -585,7 +603,7 @@ Please **note** that there are some restrictions at the moment:
 
 - Only **Windows** operating system is supported.
 - Parallel launch of browsers is synchronized between calls.
-- Working with **workers** is possible only when specifying separate `FINGERPRINT_CWD` for each worker.
+- Working with **workers** is possible only when specifying a separate working folder for each of them.
 
 Also, there is no guarantee that each of these items will be changed in the future.
 
@@ -711,6 +729,22 @@ Set the proxy settings using the specified proxy as a string and additional opti
 Returns: **this** The same plugin instance with an updated settings (for optional chaining).
 
 Set the fingerprint settings using the specified fingerprint as a string and additional options when specified.
+
+---
+
+#### [plugin.setWorkingFolder(folder)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L548)
+
+- `folder` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The selected working folder.
+
+Change the working folder that the plugin uses to work with the engine.
+
+---
+
+#### [plugin.setRequestTimeout(timeout)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L530)
+
+- `timeout` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** The selected request timeout.
+
+Change the request timeout that the plugin uses to work with the engine.
 
 ---
 
