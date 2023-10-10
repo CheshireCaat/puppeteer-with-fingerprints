@@ -44,7 +44,9 @@ exports.bindHooks = (browser, hooks = {}) => {
   /** @param {import('puppeteer').Page} page */
   function patchPage(page) {
     page.setViewport = new Proxy(page.setViewport, {
-      apply: () => console.warn('Warning: setting the viewport size is not allowed (limited by fingerprint).'),
+      apply: async () => {
+        console.warn('Warning: setting the viewport size is not allowed (limited by fingerprint).');
+      },
     });
 
     return page;
