@@ -23,9 +23,12 @@ exports.onClose = (target, listener) => {
 exports.bindHooks = (browser, hooks = {}) => {
   if (browser.version) {
     // The `version` property only exists in the browser, so we can patch the context creation.
-    browser.createIncognitoBrowserContext = new Proxy(browser.createIncognitoBrowserContext, {
-      apply: (fn, ctx, [opts]) => fn.call(ctx, resetOptions(opts)).then(patchContext),
-    });
+    for (const method of ['createBrowserContext', 'createIncognitoBrowserContext']) {
+      if (typeof browser[method] !== 'function') continue;
+      browser[method] = new Proxy(browser[method], {
+        apply: (fn, ctx, [opts]) => fn.call(ctx, resetOptions(opts)).then(patchContext),
+      });
+    }
   }
 
   /** @param {import('puppeteer').BrowserContext} ctx */

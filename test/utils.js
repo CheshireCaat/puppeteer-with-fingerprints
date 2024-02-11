@@ -44,7 +44,7 @@ describe('utils', () => {
 
       await assert.doesNotReject(async () => {
         if (browser.version) {
-          ctx = await browser.createIncognitoBrowserContext();
+          ctx = await browser.createBrowserContext();
         }
       });
       assert.match(ctx.constructor.name, /Context/);
