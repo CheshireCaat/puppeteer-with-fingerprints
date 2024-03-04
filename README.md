@@ -2,7 +2,7 @@
 
 This is the repo for `puppeteer-with-fingerprints`, a plugin for the [puppeteer](https://github.com/puppeteer/puppeteer) framework that allows you to change a browser fingerprint, generate a virtual identity and improve your browser's stealth.
 
-In order to achieve this, the [FingerprintSwitcher](https://fingerprints.bablosoft.com) service is used, which allows you to replace a list of important browser properties, and thus you will act like a completely new user.
+In order to achieve this, the [FingerprintSwitcher](https://fp.bablosoft.com) service is used, which allows you to replace a list of important browser properties, and thus you will act like a completely new user.
 
 **Warning:** plugin is still in beta stage, it means that bugs may happen, including critical.
 
@@ -13,7 +13,7 @@ In general, only **four** basic steps are required, see the example below:
 
 https://user-images.githubusercontent.com/30115373/198843995-2d1a7941-e5e6-4344-9f59-f8bf43adab00.mp4
 
-Current supported engine version - **121.0.6167.86**.
+Current supported engine version - **122.0.6261.58**.
 
 ## About
 
@@ -30,7 +30,7 @@ This result cannot be achieved using only the replacement of various browser pro
 
 ![WebGL](https://github.com/CheshireCaat/browser-with-fingerprints/raw/master/assets/webgl.jpg)
 
-You can learn more by following this [link](https://fingerprints.bablosoft.com/#capabilities).
+You can learn more by following this [link](https://fp.bablosoft.com/#capabilities).
 
 ## Installation
 
@@ -422,7 +422,7 @@ const fingerprint = await plugin.fetch('', {
 
 In the free version, the [PerfectCanvas](https://wiki.bablosoft.com/doku.php?id=perfectcanvas) technology is also not available.
 There are other limitations when using the free version - for example, limiting the number of requests in a certain period of time.
-To see the differences and limits of different versions, visit [this](https://fingerprints.bablosoft.com/#pricing) website.
+To see the differences and limits of different versions, visit [this](https://fp.bablosoft.com/#pricing) website.
 
 You can buy a key [here](https://bablosoft.com/directbuy/FingerprintSwitcher/2) to avoid limitations.
 
@@ -559,7 +559,7 @@ const plugin2 = createPlugin(puppeteer);
 
 Use this with caution and only in extreme cases - for example, if you are using a wrapper library. It is much safer to work with a default plugin instance.
 
-If you want to learn more about fingerprint substitution technology, explore the list of replaceable properties and various options, such as tags, get or configure your service key, use [this](https://fingerprints.bablosoft.com) link.
+If you want to learn more about fingerprint substitution technology, explore the list of replaceable properties and various options, such as tags, get or configure your service key, use [this](https://fp.bablosoft.com) link.
 There you can also get a test fingerprint and see ready-made values that can be applied to your browser.
 
 ### More examples
@@ -569,7 +569,7 @@ You can run them yourself by cloning the repository locally and installing the d
 
 ## Architecture
 
-This plugin uses the [FingerprintSwitcher](https://fingerprints.bablosoft.com) service to get fingerprints.
+This plugin uses the [FingerprintSwitcher](https://fp.bablosoft.com) service to get fingerprints.
 The resulting fingerprints are used later directly when working with the browser and are applied in a special way using a custom configuration files.
 
 There are some **limitations** in using the package, which may be critical or non-critical depending on your task.
