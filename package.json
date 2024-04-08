@@ -4,7 +4,7 @@
   "homepage": "https://github.com/CheshireCaat/puppeteer-with-fingerprints#readme",
   "repository": "CheshireCaat/puppeteer-with-fingerprints",
   "author": "CheshireCaat",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CheshireCaat/puppeteer-with-fingerprints/issues",
@@ -49,13 +49,13 @@
     "src"
   ],
   "dependencies": {
-    "browser-with-fingerprints": "1.5.7"
+    "browser-with-fingerprints": "1.5.8"
   },
   "devDependencies": {
     "@cheshire-caat/prettier-config": "^1.0.0",
     "dotenv": "^16.4.5",
-    "mocha": "^10.3.0",
-    "puppeteer": "^22.3.0"
+    "mocha": "^10.4.0",
+    "puppeteer": "^22.6.3"
   },
   "peerDependencies": {
     "puppeteer": ">=19.1.0",
