@@ -9,7 +9,7 @@ const { scripts, MAX_RESIZE_RETRIES } = require('browser-with-fingerprints/src/c
  * @internal
  */
 exports.onClose = (target, listener) => {
-  target.once(target.version ? 'disconnected' : 'close', listener);
+  target.once(isBrowser(target) ? 'disconnected' : 'close', listener);
 };
 
 /**
@@ -21,8 +21,7 @@ exports.onClose = (target, listener) => {
  * @internal
  */
 exports.bindHooks = (browser, hooks = {}) => {
-  if (browser.version) {
-    // The `version` property only exists in the browser, so we can patch the context creation.
+  if (isBrowser(browser)) {
     for (const method of ['createBrowserContext', 'createIncognitoBrowserContext']) {
       if (typeof browser[method] !== 'function') continue;
       browser[method] = new Proxy(browser[method], {
@@ -113,3 +112,7 @@ const resetOptions = (options = {}) => ({
   ...(options != null && typeof options === 'object' ? options : {}),
   viewport: null,
 });
+
+const isBrowser = (target) => {
+  return target && typeof target.version === 'function';
+};

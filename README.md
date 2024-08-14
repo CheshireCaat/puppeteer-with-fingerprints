@@ -9,11 +9,11 @@ In order to achieve this, the [FingerprintSwitcher](https://fp.bablosoft.com) se
 Adding a plugin to your project is very easy - it only takes a few lines of code.
 You just need to change the browser startup code a bit and add method calls to get and apply fingerprints.
 The rest of the code can remain unchanged.
-In general, only **four** basic steps are required, see the example below:
+In general, only **four** basic steps are required, see the example below (code from the example may differ slightly from the real one):
 
 https://user-images.githubusercontent.com/30115373/198843995-2d1a7941-e5e6-4344-9f59-f8bf43adab00.mp4
 
-Current supported engine version - **126.0.6478.57**.
+Current supported engine version - **127.0.6533.73**.
 
 ## About
 
@@ -209,7 +209,7 @@ You can use the official [API](https://pptr.dev/api/puppeteer.puppeteernode.laun
 The **launch** method also has the same purpose - to start a new browser instance with the given parameters and connect to it.
 
 In addition to the standard functionality, it allows you to change the fingerprint and proxy using the `useFingerprint` and `useProxy` methods.
-A detailed description and annotations can also be found [here](src/index.d.ts#L60).
+A detailed description and annotations can also be found [here](src/index.d.ts#L75).
 
 ```js
 const { plugin } = require('puppeteer-with-fingerprints');
@@ -292,11 +292,11 @@ plugin.useProxy('127.0.0.1:8080').useFingerprint(fingerprint);
 
 Use these links to see a detailed description of the methods:
 
-- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L362) one for the **useFingerprint** method
+- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L364) one for the **useFingerprint** method
   (also see additional options [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L38)).
-- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L441) one for the **useProfile** method
+- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L394) one for the **useProfile** method
   (also see additional options [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L110)).
-- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L418) one for the **useProxy** method
+- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L422) one for the **useProxy** method
   (also see additional options [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L131)).
 
 The usage of these methods is very similar - each takes two parameters, the first of which is the configuration data itself, and the second is additional options.
@@ -309,14 +309,14 @@ Thus, you can pre-configure the plugin in a certain way, or change something imm
 
 You can change the browser version right while using the plugin - the engine may come with several different builds of the browser.
 
-In order to do this, use the **useBrowserVersion** method or the **version** property (deprecated).
-The last one defaults to `default`, which means that the latest available version will be used:
+In order to do this, use the **useBrowserVersion** method.
+The `default` value means that the latest available version will be used:
 
 ```js
 const { plugin } = require('puppeteer-with-fingerprints');
 
 // Use a specific version:
-plugin.useBrowserVersion('115.0.5790.99');
+plugin.useBrowserVersion('127.0.6533.73');
 
 // Use the latest available version:
 plugin.useBrowserVersion('default');
@@ -371,13 +371,27 @@ const { plugin } = require('puppeteer-with-fingerprints');
 
 const fingerprint = await plugin.fetch('SERVICE_KEY', {
   tags: ['Microsoft Windows', 'Chrome'],
-  // Fetch fingerprints only with a browser version higher than 115:
-  minBrowserVersion: 115,
-  // Fetch fingerprints only with a browser version lower than 119:
-  maxBrowserVersion: 119,
+  // Fetch fingerprints only with a browser version higher than 125:
+  minBrowserVersion: 125,
+  // Fetch fingerprints only with a browser version lower than 127:
+  maxBrowserVersion: 127,
   // Fetch fingerprints only collected in the last 15 days:
   timeLimit: '15 days',
 });
+```
+
+**Warning:** according to the latest engine and service updates, now it's also necessary to specify the service key for applying the fingerprint.
+The key must match the one with which the fingerprint was obtained - it can only be omitted if the free version was used (an empty string for the key):
+
+```js
+const { plugin } = require('puppeteer-with-fingerprints');
+
+const fingerprint = await plugin.fetch('SERVICE_KEY', {
+  tags: ['Microsoft Windows', 'Chrome'],
+});
+plugin.useFingerprint(fingerprint);
+
+await plugin.launch({ key: 'SERVICE_KEY' });
 ```
 
 All possible settings for **fetch** method, as well as their descriptions, you can find [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L186).
@@ -403,7 +417,7 @@ await writeFile('fingerprint.json', fingerprint);
 plugin.useFingerprint(await readFile('fingerprint.json', 'utf8'));
 ```
 
-You can learn more about the options directly when adding these methods - just use the built-in [annotations](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L478).
+You can learn more about the options directly when adding these methods - just use the built-in [annotations](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L484).
 
 You can use any [tags](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L15), filters
 (e.g. [time](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L8) limit) and settings if you have a service key.
@@ -416,7 +430,7 @@ const fingerprint = await plugin.fetch('', {
   // You can only use these tags with the free version:
   tags: ['Microsoft Windows', 'Chrome'],
   // You also cannot use such filters in the free version:
-  // minBrowserVersion: 115,
+  // minBrowserVersion: 127,
 });
 ```
 
@@ -465,7 +479,7 @@ After launching a browser with your profile, the fingerprint and proxy data you 
 This setting itself is saved between browser launches, that is, it behaves in the same way as other similar methods.
 To run different profiles, you need to call this method again with different values for the profile directory.
 
-You can learn more about the parameters and additional options for this method [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L441)
+You can learn more about the parameters and additional options for this method [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L394)
 and [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L110).
 
 #### Temporary profiles
@@ -504,7 +518,7 @@ plugin.useProxy('127.0.0.1:8080', {
 });
 ```
 
-You can learn more about the parameters and additional options for this method [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L418)
+You can learn more about the parameters and additional options for this method [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L422)
 and [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L131).
 
 The browser supports two types of proxies - **https** and **socks5**.
@@ -540,7 +554,7 @@ It's better to replace such code with the `useProxy` method. This is much more c
 
 ### More info
 
-If you are having problems with the default plugin, or want to create multiple instances with different settings, you can use a separate exported [createPlugin](src/index.d.ts#L102) method.
+If you are having problems with the default plugin, or want to create multiple instances with different settings, you can use a separate exported [createPlugin](src/index.d.ts#L117) method.
 It allows you to create a standalone plugin instance that is used in the same way as a standard one. It takes a **puppeteer** compatible launcher object as a parameter:
 
 ```js
@@ -633,25 +647,15 @@ Describes a time limit that can be used to filter fingerprints.
 
 ---
 
-#### [Version](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L586)
+#### [Version](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L596)
 
 Describes an object that provides complete information about the available browser version.
 
 ---
 
-#### [plugin.version](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L580)
+#### [createPlugin(launcher)](src/index.d.ts#L117)
 
-Type: **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-
-Get or set the current browser version used by the plugin instance.
-
-Initially it is set to `default`, which means that the latest available version will be used.
-
----
-
-#### [createPlugin(launcher)](src/index.d.ts#L102)
-
-- `launcher` **[Launcher](src/index.d.ts#L9)** Puppeteer (or **API** compatible) browser launcher.
+- `launcher` **[Launcher](src/index.d.ts#L24)** Puppeteer (or **API** compatible) browser launcher.
 
 Returns: **PuppeteerFingerprintPlugin** A new separate plugin instance.
 
@@ -669,7 +673,7 @@ Get a list of all available browser versions.
 
 ---
 
-#### [plugin.spawn(options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L512)
+#### [plugin.spawn(options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L520)
 
 - `options` **[Options](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/plugin/launcher/index.d.ts#L54)?** Launcher options that only apply to the browser when using the `spawn` method.
 
@@ -679,9 +683,9 @@ Launches a browser instance with given arguments and options when specified.
 
 ---
 
-#### [plugin.launch(options?)](src/index.d.ts#L60)
+#### [plugin.launch(options?)](src/index.d.ts#L75)
 
-- `options` **Puppeteer.LaunchOptions** Set of configurable options to set on the browser.
+- `options` **[PluginLaunchOptions](src/index.d.ts#L9)?** Set of configurable options to set on the browser.
 
 Returns: **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Puppeteer.Browser>** Promise which resolves to a browser instance.
 
@@ -689,7 +693,7 @@ Launches **puppeteer** and launches a browser instance with given arguments and 
 
 ---
 
-#### [plugin.fetch(key, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L478)
+#### [plugin.fetch(key, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L484)
 
 - `key` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Service key for obtaining a fingerprint.
 - `options` **[FetchOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L186)?** Set of configurable options for getting a browser fingerprint.
@@ -700,7 +704,7 @@ Obtain a fingerprint using the specified service key and additional options.
 
 ---
 
-#### [plugin.useBrowserVersion(version)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L441)
+#### [plugin.useBrowserVersion(version)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L445)
 
 - `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Version value as a string.
 
@@ -710,7 +714,7 @@ Set the current browser version used by the plugin instance.
 
 ---
 
-#### [plugin.useProxy(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L418)
+#### [plugin.useProxy(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L422)
 
 - `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Proxy value as a string.
 - `options` **[ProxyOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L131)?** Set of configurable options for applying a proxy.
@@ -721,7 +725,18 @@ Set the proxy settings using the specified proxy as a string and additional opti
 
 ---
 
-#### [plugin.useFingerprint(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L362)
+#### [plugin.useProfile(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L394)
+
+- `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Profile value as a string.
+- `options` **[ProfileOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L110)?** Set of configurable options for applying a profile.
+
+Returns: **this** The same plugin instance with an updated settings (for optional chaining).
+
+Set the profile settings using the specified profile as a string and additional options when specified.
+
+---
+
+#### [plugin.useFingerprint(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L364)
 
 - `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Fingerprint value as a string.
 - `options` **[FingerprintOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L38)?** Set of configurable options for applying a fingerprint.
@@ -732,7 +747,7 @@ Set the fingerprint settings using the specified fingerprint as a string and add
 
 ---
 
-#### [plugin.setWorkingFolder(folder)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L548)
+#### [plugin.setWorkingFolder(folder)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L556)
 
 - `folder` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The selected working folder.
 
@@ -740,7 +755,7 @@ Change the working folder that the plugin uses to work with the engine.
 
 ---
 
-#### [plugin.setRequestTimeout(timeout)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L530)
+#### [plugin.setRequestTimeout(timeout)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L538)
 
 - `timeout` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** The selected request timeout.
 

@@ -7,7 +7,7 @@ const key = process.env.FINGERPRINT_KEY ?? '';
 (async () => {
   for (let i = 0; i < 2; ++i) {
     const fingerprint = await plugin.fetch(key, { tags: ['Microsoft Windows', 'Chrome'] });
-    const browser = await plugin.useFingerprint(fingerprint).launch();
+    const browser = await plugin.useFingerprint(fingerprint).launch({ key });
 
     const page = await browser.newPage();
     await page.goto('https://httpbin.org/headers', { waitUntil: 'domcontentloaded' });

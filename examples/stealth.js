@@ -6,7 +6,7 @@ const key = process.env.FINGERPRINT_KEY ?? '';
 
 (async () => {
   const fingerprint = await plugin.fetch(key, { tags: ['Microsoft Windows', 'Chrome'] });
-  const browser = await plugin.useFingerprint(fingerprint).launch({ headless: false });
+  const browser = await plugin.useFingerprint(fingerprint).launch({ key, headless: false });
 
   const page = await browser.newPage();
 

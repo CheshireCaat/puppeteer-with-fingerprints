@@ -17,7 +17,7 @@ const Plugin = class PuppeteerFingerprintPlugin extends FingerprintPlugin {
   /**
    * Configures the browser, including viewport size, hook and event binding.
    *
-   * @param {import('playwright').Browser} browser - The target browser instance.
+   * @param {import('puppeteer').Browser} browser - The target browser instance.
    * @param {{width: number, height: number}} bounds - The size of the viewport.
    * @param {Promise<void>} sync - Method for syncing browser settings.
    * @param {(target: any) => void} cleanup - The cleanup function.

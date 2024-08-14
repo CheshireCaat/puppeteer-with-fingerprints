@@ -1,14 +1,7 @@
-# Dependencies
 node_modules
-
-# Examples artifacts
 examples/*.png
 examples/*.jpeg
 examples/profile
-
-# IDE artifacts
 .vscode
-
-# Miscellaneous
 *.env
 data

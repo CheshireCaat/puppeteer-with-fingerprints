@@ -1,10 +1,25 @@
 import type { PuppeteerNode } from 'puppeteer';
 import type { FingerprintPlugin } from 'browser-with-fingerprints';
 
+type LaunchFn = Launcher['launch'];
+
+/**
+ * Describes the **puppeteer** compatible launch options.
+ */
+export type PluginLaunchOptions =
+  | Parameters<LaunchFn>[0]
+  | {
+      /**
+       * Service key for applying a fingerprint.
+       * @defaultValue ''
+       */
+      key?: string;
+    };
+
 /**
  * Describes the **puppeteer** compatible browser launcher.
  *
- * See [playwright](https://pptr.dev/api/puppeteer.puppeteernode.launch) docs for more information.
+ * See [puppeteer](https://pptr.dev/api/puppeteer.puppeteernode.launch) docs for more information.
  */
 export type Launcher = Pick<PuppeteerNode, 'launch'>;
 
@@ -43,6 +58,8 @@ export interface PuppeteerFingerprintPlugin extends FingerprintPlugin {
    *
    * If you need to use the default browsers without fingerprint spoofing, just use the **puppeteer** built-in `launch` method.
    *
+   * You must specify the service key to apply the fingerprint when launching the browser (if the fingerprint was obtained using a paid key).
+   *
    * @example
    * An example of launching the browser in visible mode:
    *
@@ -55,7 +72,7 @@ export interface PuppeteerFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a browser instance.
    */
-  launch(...args: Parameters<Launcher['launch']>): ReturnType<Launcher['launch']>;
+  launch(options?: PluginLaunchOptions): ReturnType<LaunchFn>;
 
   /**
    * A **puppeteer** compatible launcher or the **puppeteer** itself.
