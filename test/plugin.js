@@ -41,8 +41,8 @@ describe('plugin', () => {
         try {
           await plugin.launch({ [option]: null });
           assert.fail(`Expected an error when passing unsupported option: ${option}`);
-        } catch (err) {
-          assert.ok(err.message.includes(option), `Error message should mention "${option}"`);
+        } catch (error) {
+          assert.ok(error.message.includes(option), `Error message should mention "${option}"`);
         }
       }
     });
