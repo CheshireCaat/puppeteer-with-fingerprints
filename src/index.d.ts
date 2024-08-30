@@ -14,7 +14,7 @@ export type PluginLaunchOptions =
        *
        * @defaultValue ''
        */
-      key?: string;
+      // key?: string;
     };
 
 /**

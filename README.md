@@ -388,7 +388,7 @@ plugin.useFingerprint(fingerprint, {
 ```
 
 In order to obtain fingerprints you should use the **fetch** plugin method.
-Pass the service key as the first argument and additional parameters as the second, if necessary:
+Pass the service key as the first argument for the **serviceKey** and additional parameters for the **fetch**, if necessary:
 
 ```js
 const { plugin } = require('puppeteer-with-fingerprints');
@@ -408,18 +408,17 @@ const fingerprint = await plugin.fetch({
 });
 ```
 
-**Warning:** according to the latest engine and service updates, now it's also necessary to specify the service key for applying the fingerprint.
-The key must match the one with which the fingerprint was obtained - it can only be omitted if the free version was used (an empty string for the key):
+In order to use filters and many other settings from the example above, you will need a premium key, the same applies to tags that differ from the default ones:
 
 ```js
 const { plugin } = require('puppeteer-with-fingerprints');
 
 // Set the service key for the plugin (you can buy it here https://bablosoft.com/directbuy/FingerprintSwitcher/2).
-// Leave an empty string to use the free version.
-plugin.setServiceKey('');
+plugin.setServiceKey('SERVICE_KEY');
 
+// In order to use custom tags you need the premium key:
 const fingerprint = await plugin.fetch({
-  tags: ['Microsoft Windows', 'Chrome'],
+  tags: ['Android', 'Chrome'],
 });
 plugin.useFingerprint(fingerprint);
 
@@ -740,17 +739,6 @@ Launches **puppeteer** and launches a browser instance with given arguments and 
 
 #### [plugin.fetch(options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L540)
 
-- `options` **[FetchOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L242)?** Set of configurable options for getting a browser fingerprint.
-
-Returns: **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)&lt;string>** Promise which resolves to a fingerprint string.
-
-Obtain a fingerprint using the specified service key and additional options.
-
----
-
-#### [plugin.fetch(key, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L540)
-
-- `key` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Service key for obtaining a fingerprint.
 - `options` **[FetchOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L242)?** Set of configurable options for getting a browser fingerprint.
 
 Returns: **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)&lt;string>** Promise which resolves to a fingerprint string.
