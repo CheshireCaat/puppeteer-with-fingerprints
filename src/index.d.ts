@@ -11,6 +11,7 @@ export type PluginLaunchOptions =
   | {
       /**
        * Service key for applying a fingerprint.
+       *
        * @defaultValue ''
        */
       key?: string;

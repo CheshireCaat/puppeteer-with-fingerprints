@@ -2,13 +2,11 @@ const { plugin } = require('..');
 const assert = require('assert').strict;
 const { setTimeout } = require('timers/promises');
 
-describe.skip('plugin', () => {
+describe('plugin', () => {
   let browser;
 
   before(async () => {
-    browser = await plugin.launch({
-      args: ['--bas-disable-tab-hook'],
-    });
+    browser = await plugin.launch();
   });
 
   after(async () => {
