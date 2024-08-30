@@ -265,9 +265,12 @@ You can also find out about it directly [here](https://github.com/CheshireCaat/b
 
 ## Configuring plugin
 
-At the moment, it is possible to change the working folder and timeout for requests to the engine, which is used when fetching, applying fingerprints, and so on:
+At the moment, it is possible to change the service key, working folder and timeout for requests to the engine, which is used when fetching, applying fingerprints, and so on:
 
 ```js
+// Set the fingerprint service key for all plugin methods that require it.
+plugin.setServiceKey('SERVICE_KEY');
+
 // Set the folder where the plugin engine will be installed:
 plugin.setWorkingFolder('./engine');
 
@@ -279,7 +282,7 @@ The methods from the example above change the settings globally, that is, for al
 
 The default values are the `./data` directory for the working folder and `300000` milliseconds for the request timeout.
 
-The same result can be achieved using environment variables, however it is strongly recommended to use the described methods.
+An empty string is used for the fingerprint service key by default, which means that the free version of the service will be used.
 
 ## Configuring browser
 
