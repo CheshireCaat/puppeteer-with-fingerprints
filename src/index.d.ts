@@ -1,4 +1,4 @@
-import type { PuppeteerNode } from 'puppeteer';
+import type { PuppeteerNode } from 'puppeteer-core';
 import type { FingerprintPlugin } from 'browser-with-fingerprints';
 
 type LaunchFn = Launcher['launch'];
@@ -6,16 +6,7 @@ type LaunchFn = Launcher['launch'];
 /**
  * Describes the **puppeteer** compatible launch options.
  */
-export type PluginLaunchOptions =
-  | Parameters<LaunchFn>[0]
-  | {
-      /**
-       * Service key for applying a fingerprint.
-       *
-       * @defaultValue ''
-       */
-      // key?: string;
-    };
+export type PluginLaunchOptions = Parameters<LaunchFn>[0];
 
 /**
  * Describes the **puppeteer** compatible browser launcher.
