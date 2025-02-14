@@ -1,12 +1,10 @@
-import type { PuppeteerNode } from 'puppeteer-core';
+import type { PuppeteerNode, Browser } from 'puppeteer-core';
 import type { FingerprintPlugin } from 'browser-with-fingerprints';
-
-type LaunchFn = Launcher['launch'];
 
 /**
  * Describes the **puppeteer** compatible launch options.
  */
-export type PluginLaunchOptions = Parameters<LaunchFn>[0];
+export type PluginLaunchOptions = Parameters<Launcher['launch']>[0];
 
 /**
  * Describes the **puppeteer** compatible browser launcher.
@@ -64,7 +62,7 @@ export interface PuppeteerFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a browser instance.
    */
-  launch(options?: PluginLaunchOptions): ReturnType<LaunchFn>;
+  launch(options?: PluginLaunchOptions): Browser;
 
   /**
    * A **puppeteer** compatible launcher or the **puppeteer** itself.

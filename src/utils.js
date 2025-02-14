@@ -68,7 +68,9 @@ exports.bindHooks = (target, hooks = {}) => {
 exports.setViewport = async (page, { diff, width = 0, height = 0 }) => {
   const delta = diff ? { ...diff } : { width: 16, height: 88 };
 
-  const cdp = await page.target().createCDPSession();
+  const cdp = await (typeof page.createCDPSession === 'function'
+    ? page.createCDPSession()
+    : page.target().createCDPSession());
   const { windowId } = await cdp.send('Browser.getWindowForTarget');
 
   for (let i = 0; i < MAX_RESIZE_RETRIES; ++i) {
