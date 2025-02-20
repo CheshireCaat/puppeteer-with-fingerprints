@@ -15,6 +15,8 @@ https://user-images.githubusercontent.com/30115373/198843995-2d1a7941-e5e6-4344-
 
 Current supported engine version - **132.0.6834.84**.
 
+**IMPORTANT NOTE:** plugin only work on **Windows** operating system, it cannot be installed and used on **Linux**, **macOS** and other systems!
+
 ## About
 
 This library allows you to change browser fingerprint and use **puppeteer** automation framework with enhanced anonymity.
