@@ -7,4 +7,4 @@ const Loader = require('browser-with-fingerprints/src/loader');
  *
  * @internal
  */
-exports.loader = new Loader('puppeteer', '19.1.0', ['puppeteer-core']);
+module.exports = new Loader('puppeteer', '19.1.0', ['puppeteer-core']);

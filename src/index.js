@@ -1,6 +1,9 @@
-const { loader } = require('./loader');
+const defaultLauncher = require('./loader').load();
 const { FingerprintPlugin } = require('browser-with-fingerprints');
 const { onClose, bindHooks, getViewport, setViewport } = require('./utils');
+
+const IGNORED_ARGUMENTS = ['--disable-extensions'];
+const UNSUPPORTED_OPTIONS = ['product', 'channel', 'extraPrefsFirefox'];
 
 const Plugin = class PuppeteerFingerprintPlugin extends FingerprintPlugin {
   async launch(options = {}) {
@@ -63,10 +66,8 @@ const Plugin = class PuppeteerFingerprintPlugin extends FingerprintPlugin {
   }
 };
 
-exports.plugin = new Plugin(loader.load());
+exports.plugin = new Plugin(defaultLauncher);
 
 exports.createPlugin = Plugin.create.bind(Plugin);
 
-const IGNORED_ARGUMENTS = ['--disable-extensions'];
-
-const UNSUPPORTED_OPTIONS = (exports.UNSUPPORTED_OPTIONS = ['product', 'channel', 'extraPrefsFirefox']);
+exports.UNSUPPORTED_OPTIONS = UNSUPPORTED_OPTIONS;

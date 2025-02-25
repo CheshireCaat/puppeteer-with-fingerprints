@@ -278,6 +278,9 @@ plugin.setWorkingFolder('./engine');
 
 // Set the timeout used when fetching fingerprints and so on:
 plugin.setRequestTimeout(5 * 60000);
+
+// Set the timeout used when installing/downloading engine:
+plugin.setEngineTimeout(10 * 60000);
 ```
 
 The methods from the example above change the settings globally, that is, for all instances of the plugin.
@@ -795,7 +798,7 @@ Set the fingerprint settings using the specified fingerprint as a string and add
 
 ---
 
-#### [plugin.setWorkingFolder(folder)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L284)
+#### [plugin.setWorkingFolder(folder)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L301)
 
 - `folder` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The working folder that the plugin engine will use.
 
@@ -807,11 +810,19 @@ Set the working folder that the plugin uses to work with the engine.
 
 - `timeout` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** The request timeout that the plugin engine will use.
 
-Set the request timeout that the plugin uses to work with the engine.
+Set the timeout that the plugin uses when executing requests (pass `0` to disable it).
 
 ---
 
-#### [plugin.setServiceKey(key)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L301)
+#### [plugin.setEngineTimeout(timeout)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L284)
+
+- `timeout` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** The engine timeout that the plugin engine will use.
+
+Set the timeout that the plugin uses when fetching engine (pass `0` to disable it).
+
+---
+
+#### [plugin.setServiceKey(key)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L318)
 
 - `key` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The service key for obtaining and applying a fingerprint.
 
