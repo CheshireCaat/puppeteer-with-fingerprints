@@ -62,7 +62,7 @@ export interface PuppeteerFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a browser instance.
    */
-  launch(options?: PluginLaunchOptions): Browser;
+  launch(options?: PluginLaunchOptions): Promise<Browser>;
 
   /**
    * A **puppeteer** compatible launcher or the **puppeteer** itself.
