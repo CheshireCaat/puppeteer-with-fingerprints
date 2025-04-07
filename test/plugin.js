@@ -6,10 +6,14 @@ describe('plugin', () => {
   let browser;
 
   before(async () => {
+    plugin.useProxy(process.env.FINGERPRINT_PROXY || '');
+
     browser = await plugin.launch();
   });
 
   after(async () => {
+    plugin.useProxy('');
+
     if (browser) {
       await browser.close();
     }
