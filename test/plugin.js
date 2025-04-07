@@ -60,7 +60,7 @@ describe('plugin', () => {
   it('should work with the browser normally', async () => {
     try {
       const page = await browser.newPage();
-      await page.goto('https://example.com/');
+      await page.goto('https://google.com/');
     } catch (error) {
       assert.fail(`Browser navigation failed: ${error.message}`);
     }
