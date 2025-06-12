@@ -7,7 +7,7 @@ describe('utils', () => {
 
   beforeEach(async function () {
     browser = await plugin.launch({
-      headless: !this.test.title.includes('headful'),
+      headless: this.test.title.includes('headless'),
     });
   });
 

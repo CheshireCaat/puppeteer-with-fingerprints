@@ -13,7 +13,7 @@ In general, only **four** basic steps are required, see the example below (code 
 
 https://user-images.githubusercontent.com/30115373/198843995-2d1a7941-e5e6-4344-9f59-f8bf43adab00.mp4
 
-Current supported engine version - **135.0.7049.42**.
+Current supported engine version - **137.0.7151.56**.
 
 **IMPORTANT NOTE:** plugin only work on **Windows** operating system, it cannot be installed and used on **Linux**, **macOS** and other systems!
 
