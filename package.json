@@ -7,7 +7,7 @@
     "url": "git+https://github.com/CheshireCaat/puppeteer-with-fingerprints.git"
   },
   "author": "CheshireCaat",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CheshireCaat/puppeteer-with-fingerprints/issues",
@@ -52,7 +52,7 @@
     "src"
   ],
   "dependencies": {
-    "browser-with-fingerprints": "2.3.2"
+    "browser-with-fingerprints": "2.3.3"
   },
   "devDependencies": {
     "@cheshire-caat/prettier-config": "^1.0.0",
